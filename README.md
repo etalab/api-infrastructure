@@ -1,2 +1,3 @@
-# api-infrastructure
-Ansible collection developped as unified shared roles
+# Ansible Collection - etalab.api_infrastructure
+
+Documentation for the collection.
