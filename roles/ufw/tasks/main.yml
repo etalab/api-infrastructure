@@ -1,0 +1,14 @@
+---
+- name: Enable UFW and close all ports (DO NOT INTERRUPT!!!)
+  ufw:
+    state: enabled
+    policy: deny
+# NB. if the playbook stops here you will loss access to your server.
+
+- name: Allow all TCP access to allowed ports
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  with_items:
+    - "{{ allowed_ports }}"

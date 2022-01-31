@@ -1,0 +1,36 @@
+---
+- name: Add users ssh key
+  authorized_key:
+    user: "{{ item.1 }}"
+    key: "{{ item.0 }}"
+  with_subelements:
+    - "{{ team_ssh_keys }}"
+    - "{{ target_users }}"
+
+- name: Disable empty password login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?PermitEmptyPasswords"
+    line: "PermitEmptyPasswords no"
+  notify: restart sshd
+
+- name: Disable remote root login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+  notify: restart sshd
+
+- name: Disable password login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: '^(#\s*)?PasswordAuthentication '
+    line: "PasswordAuthentication no"
+  notify: restart sshd
+
+- name: Enable PAM
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?UsePAM"
+    line: "UsePAM yes"
+  notify: restart sshd
