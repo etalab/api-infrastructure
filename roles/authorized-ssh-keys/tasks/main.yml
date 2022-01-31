@@ -2,10 +2,10 @@
 - name: Add users ssh key
   authorized_key:
     user: "{{ item.1 }}"
-    key: "{{ item.0 }}"
-  with_nested:
-    - "{{ team_ssh_keys }}"
-    - "{{ target_users }}"
+    key: "{{ item.0.key }}"
+  with_subelements:
+    - "{{ authorized_ssh_keys }}"
+    - users
 
 - name: Disable empty password login
   lineinfile:

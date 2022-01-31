@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    options:
+      authorized_ssh_keys:
+        type: list
+        required: false
+        default: []
+        description: |
+          A list of authorized SSH keys. Each list element is a dict with the following keys:
+          - key: The SSH key to add
+          - users: The users to add the key to
+        elements:
+          type: dict
+          options:
+            key:
+              type: str
+              required: true
+              description: The public ssh key or a link to it
+            users:
+              type: list
+              required: true
+              description: The list of users to add the key to
+              elements:
+                type: str
+                required: true
+                description: The user name

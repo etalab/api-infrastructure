@@ -1,3 +1,0 @@
----
-team_ssh_keys: []
-target_users: ["{{ ansible_user }}"]
