@@ -3,7 +3,7 @@
   authorized_key:
     user: "{{ item.1 }}"
     key: "{{ item.0 }}"
-  with_subelements:
+  with_nested:
     - "{{ team_ssh_keys }}"
     - "{{ target_users }}"
 
