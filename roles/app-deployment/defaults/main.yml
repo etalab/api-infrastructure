@@ -1,0 +1,5 @@
+---
+dev_deployment: false
+deployment_script_dir: "/home/{{ ansible_user }}"
+deployment_script_owner: "{{ ansible_user }}"
+root_path: /opt/apps

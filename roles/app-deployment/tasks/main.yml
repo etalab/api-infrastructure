@@ -1,0 +1,4 @@
+---
+- name: Run the dev playbook
+  import_tasks: dev.yml
+  when: dev_deployment
