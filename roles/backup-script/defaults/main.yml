@@ -1,2 +1,9 @@
-openstack_container_name: "{{ store_identifier | basename }}-backup-{{ inventory_dir | basename }}"
-gpg_recipient: "apigouvfr-{{ inventory_dir | basename }}"
+openstack_container_name: "{{ backup_identifier }}-backup-{{ backup_environment }}"
+
+backup_user: "{{ ansible_user }}"
+backup_command: 'echo "No backup command specified"'
+backup_environment: "{{ inventory_file | basename }}"
+
+openstack_auth_url: https://auth.cloud.ovh.net/v3/
+openstack_identity_api_version: 3
+openstack_region_name: SBG
