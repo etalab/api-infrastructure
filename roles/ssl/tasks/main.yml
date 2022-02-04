@@ -20,6 +20,14 @@
     group: root
     mode: 0600
 
+- name: Include variables
+  include_vars:
+    file: main.yml
+
+- name: Debug variable
+  debug:
+    var: certbot_create_method
+
 - name: Install, configure and run certbot
   include_role:
     name: geerlingguy.certbot
