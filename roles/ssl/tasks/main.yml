@@ -14,23 +14,22 @@
 
 - name: Install OVH DNS API secrets file for ovh_zone
   template:
-    dest: "/etc/letsencrypt/ovh-dns-secrets/{{ ovh_zone }}.ini"
+    dest: "/etc/letsencrypt/ovh-dns-secrets/{{ ssl_ovh_zone }}.ini"
     src: ovh-secrets.ini.j2
     owner: root
     group: root
     mode: 0600
 
-- name: Include variables
-  include_vars:
-    file: main.yml
-
-- name: Debug variable
-  debug:
-    var: certbot_create_method
-
 - name: Install, configure and run certbot
   include_role:
     name: geerlingguy.certbot
+  vars:
+    certbot_auto_renew_user: "{{ ssl_certbot_auto_renew_user }}"
+    certbot_auto_renew_minute: "{{ ssl_certbot_auto_renew_minute }}"
+    certbot_auto_renew_hour: "{{ ssl_certbot_auto_renew_hour }}"
+    certbot_admin_email: "{{ ssl_certbot_admin_email }}"
+    certbot_create_if_missing: "{{ ssl_certbot_create_if_missing }}"
+    certbot_create_command: "{{ ssl_certbot_create_command }}"
 
 - name: Reload nginx after certificate installation
   service:
