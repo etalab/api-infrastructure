@@ -28,6 +28,7 @@ The aim is to share the best roles found in every Etalab project, to make them r
 | redis                 | 2      |
 | ssl                   | 2      |
 | backup-script         | 2      |
+| ssh-security          | 2      |
 | postgres              | 0      |
 | app-deployment        | 0      |
 | app-user              | 0      |
