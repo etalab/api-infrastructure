@@ -30,6 +30,7 @@
     certbot_admin_email: "{{ ssl_certbot_admin_email }}"
     certbot_create_if_missing: "{{ ssl_certbot_create_if_missing }}"
     certbot_create_command: "{{ ssl_certbot_create_command }}"
+    certbot_testmode: "{{ ssl_certbot_testmode }}"
 
 - name: Reload nginx after certificate installation
   service:
