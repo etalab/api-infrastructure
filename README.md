@@ -18,15 +18,16 @@ The aim is to share the best roles found in every Etalab project, to make them r
 ## Role list
 
 | name                  | status |
-|-----------------------|--------|
+| --------------------- | ------ |
+| refresh-apt-cache     | 2      |
+| authorized-ssh-keys   | 3      |
+| redis                 | 2      |
+| ssl                   | 2      |
+| postgres              | 0      |
 | app-deployment        | 0      |
 | app-user              | 0      |
-| authorized-ssh-keys   | 3      |
 | backup-script         | 0      |
 | continuous-deployment | 0      |
 | nginx                 | 0      |
 | node-app              | 0      |
-| postgres              | 0      |
-| redis                 | 1      |
-| ssl                   | 1      |
 | ufw                   | 0      |
