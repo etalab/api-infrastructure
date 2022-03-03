@@ -1,0 +1,3 @@
+# to check outgoing ip : curl ifconfig.co
+- name: persist iptables
+  shell: iptables-save > /etc/iptables/rules.v4

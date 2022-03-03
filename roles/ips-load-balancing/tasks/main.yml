@@ -1,0 +1,28 @@
+---
+- name: setup netplan config
+  lineinfile:
+    path: /etc/netplan/50-cloud-init.yaml
+    insertbefore: "match"
+    line: "            addresses: [{{ outgoing_ips | join('/32, ') }}/32]"
+
+- name: apply netplan config
+  shell: netplan apply
+
+- name: install iptables-persistent
+  apt:
+    name: iptables-persistent
+
+- name: reset POSTROUTING rules
+  shell: iptables -F POSTROUTING -t nat
+  notify: persist iptables
+
+# We want to choose randomly the ip used for outgoing calls.
+# As the iptables rules randomness are independent experiments, for 3 ips we want:
+# 1. the first ip to have 1 chance on 3 to be chosen
+# 2. the second ip to have 1 chance on 2 to be chosen
+# 3. the last ip to have 1 chance on 1 to be chosen
+# By doing so, we are sure that each ips have a 33% chance to be chosen.
+- name: outgoing load balancing for apps
+  shell: iptables -t nat -o ens3 -A POSTROUTING -j SNAT --to-source {{ item.1 }} -m statistic --mode random --probability {{ 1 / ((outgoing_ips | length) - item.0) }}
+  with_indexed_items: "{{ outgoing_ips }}"
+  notify: persist iptables

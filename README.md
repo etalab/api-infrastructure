@@ -19,8 +19,9 @@ The aim is to share the best roles found in every Etalab project, to make them r
 
 | name                  | status |
 | --------------------- | ------ |
-| refresh-apt-cache     | 2      |
 | authorized-ssh-keys   | 3      |
+| ips-load-balancing    | 2      |
+| refresh-apt-cache     | 2      |
 | redis                 | 2      |
 | ssl                   | 2      |
 | postgres              | 0      |
