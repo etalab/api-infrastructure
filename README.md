@@ -3,6 +3,9 @@
 This collection is currently used by the following projects:
 
 - [Auth-api](https://github.com/betagouv/api-auth)
+- [Datapass](https://github.com/betagouv/datapass)
+- [Annuaire des Entreprises](https://github.com/etalab/annuaire-entreprises-site)
+- [api.gouv.fr](https://github.com/betagouv/api.gouv.fr)
 
 The aim is to share the best roles found in every Etalab project, to make them re-usable and easy to use.
 
