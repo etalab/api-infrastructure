@@ -1,6 +1,6 @@
 # team-ssh-keys
 
-This roles adds the `authorized_ssh_keys` SSH keys to the specified users so that the team members can connect as different users on the target host.
+This role adds the `authorized_ssh_keys` SSH keys to the specified users so that the team members can connect as different users on the target host.
 It also hardens the ssh options to only allow ssh connection to these users.
 
 ## Options
