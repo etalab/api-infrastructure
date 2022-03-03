@@ -2,8 +2,6 @@
 - name: Install dependent packages.
   apt:
     name: "{{ item }}"
-    update_cache: true
-    cache_valid_time: 86400
   with_items:
     - gnupg2
     - python3-pip
