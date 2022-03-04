@@ -4,7 +4,7 @@ This roles adds the `authorized_ssh_keys` SSH keys to the specified users so tha
 
 ## Options
 
-- `authorized_ssh_keys`: a list of public SSH keys with their corresponding authorized users
+See `argument_specs.yml`.
 
 ## Example usage
 

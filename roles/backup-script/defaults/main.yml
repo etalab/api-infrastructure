@@ -1,11 +1,9 @@
 enable_backup: true
 frequency: daily
 backup_user: "{{ ansible_user }}"
-backup_identifier: mydatabase
-backup_command: 'echo "No backup command specified"'
 backup_environment: "{{ inventory_file | basename }}"
 gpg_recipient: "{{ backup_user }}@localhost"
-public_pgp_key_path: '{{ inventory_dir }}/pgp-keys/{{ inventory_file | basename }}/backup.pub.asc'
+public_pgp_key_path: "{{ inventory_dir }}/pgp-keys/{{ inventory_file | basename }}/backup.pub.asc"
 openstack_auth_url: https://auth.cloud.ovh.net/v3/
 openstack_identity_api_version: 3
 openstack_region_name: SBG

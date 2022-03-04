@@ -23,11 +23,11 @@ The aim is to share the best roles found in every Etalab project, to make them r
 | name                  | status |
 |-----------------------|--------|
 | authorized-ssh-keys   | 3      |
+| backup-script         | 3      |
 | ips-load-balancing    | 2      |
 | refresh-apt-cache     | 2      |
 | redis                 | 2      |
 | ssl                   | 2      |
-| backup-script         | 2      |
 | ssh-security          | 2      |
 | postgres              | 0      |
 | app-deployment        | 0      |

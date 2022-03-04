@@ -2,48 +2,64 @@
 argument_specs:
   main:
     options:
+      frequency:
+        type: str
+        required: false
+        default: daily
+        description: The frequency of the backup
+        choises:
+          - daily
+          - weekly
       backup_user:
         type: str
         required: false
         default: "{{ ansible_user }}"
         description: The user that will execute the backup script scheduled by crontask
-      public_pgp_key_path:
-        type: str
-        required: true
-        description: The path on the host to the public PGP key used to encrypt the backup
       backup_identifier:
         type: str
         required: true
-        description: The identifier used to name the backup script and container
+        description: The identifier used to name the backup script and container.
       backup_command:
         type: str
-        required: false
-        default: 'echo "No backup command specified"'
+        required: true
         description: |
           The command to execute to backup.
-          Must return content that will be encrypted and stored in the container.
+          Must return content in STDOUT that will be piped to the encryption command and then stored in the container.
+      backup_environment:
+        type: str
+        required: false
+        default: "{{ inventory_file | basename }}"
+        description: The environment used to name the backup script and container
+      gpg_recipient:
+        type: str
+        required: false
+        default: "{{ backup_user }}@localhost"
+        description: The GPG recipient used to encrypt the backup, might be the email address or the key id
+      public_pgp_key_path:
+        type: str
+        required: false
+        default: "{{ inventory_dir }}/pgp-keys/{{ inventory_file | basename }}/backup.pub.asc"
+        description: The path on the host to the public PGP key used to encrypt the backup
       openstack_auth_url:
         type: str
         required: false
+        default: https://auth.cloud.ovh.net/v3/
         description: The URL to the OpenStack Identity Service API
-      openstack_username:
-        type: str
-        required: true
-        description: The username to authenticate with OpenStack
-      openstack_password:
-        type: str
-        required: true
-        description: The password to authenticate with OpenStack
       openstack_identity_api_version:
         type: str
         required: false
-        default: "3"
+        default: 3
         description: The API version of the OpenStack Identity Service API
       openstack_region_name:
         type: str
         required: false
-        default: "SBG"
+        default: SBG
         description: The region name to authenticate with OpenStack
+      openstack_container_name:
+        type: str
+        required: false
+        default: "{{ backup_identifier }}-backup-{{ backup_environment }}"
+        description: The name of the container to use for the backup
       openstack_tenant_name:
         type: str
         required: true
@@ -52,17 +68,11 @@ argument_specs:
         type: str
         required: true
         description: The tenant ID to authenticate with OpenStack
-      openstack_container_name:
-        type: str
-        required: false
-        default: "{{ backup_identifier }}-backup-{{ backup_environment }}"
-        description: The name of the container to use for the backup
-      gpg_recipient:
+      openstack_username:
         type: str
         required: true
-        description: The GPG recipient used to encrypt the backup, might be the email address or the key id
-      backup_environment:
+        description: The username to authenticate with OpenStack
+      openstack_password:
         type: str
-        required: false
-        default: "{{ inventory_file | basename }}"
-        description: The environment used to name the backup script and container
+        required: true
+        description: The password to authenticate with OpenStack
