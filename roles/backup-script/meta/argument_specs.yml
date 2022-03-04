@@ -6,7 +6,10 @@ argument_specs:
         type: str
         required: false
         default: daily
-        description: The frequency of the backup
+        description: |
+          The frequency of the backup.
+          - daily: every day at 2AM
+          - weekly: every monday at 2AM
         choises:
           - daily
           - weekly

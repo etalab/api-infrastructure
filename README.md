@@ -27,8 +27,8 @@ The aim is to share the best roles found in every Etalab project, to make them r
 | ips-load-balancing    | 2      |
 | refresh-apt-cache     | 2      |
 | redis                 | 2      |
-| ssl                   | 2      |
 | ssh-security          | 2      |
+| ssl                   | 1      |
 | postgres              | 0      |
 | app-deployment        | 0      |
 | app-user              | 0      |
