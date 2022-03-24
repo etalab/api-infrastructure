@@ -1,0 +1,57 @@
+argument_specs:
+  main:
+    options:
+      ssl_certbot_certs:
+        type: raw
+        required: true
+        description: Collection of domains to generate certificate for
+      ssl_certbot_admin_email:
+        type: str
+        required: true
+        description: The email used to be notified when the certbot fails or when the certificate needs to be updated.
+      ssl_ovh_zone:
+        type: str
+        required: true
+        description: The OVH zone as configured in the OVH dashboard.
+      ssl_ovh_dns_api_app_key:
+        type: str
+        required: true
+        description: Self-explanatory
+      ssl_ovh_dns_api_app_secret:
+        type: str
+        required: true
+        description: Self-explanatory
+      ssl_ovh_dns_api_consumer_key:
+        type: str
+        required: true
+        description: Self-explanatory
+      ssl_certbot_auto_renew_user:
+        type: str
+        required: false
+        default: "{{ ansible_user }}"
+        description: Self-explanatory
+      ssl_certbot_auto_renew_minute:
+        type: str
+        required: false
+        default: "0"
+        description: Cron
+      ssl_certbot_auto_renew_hour:
+        type: str
+        required: false
+        default: "3"
+        description: Cron
+      ssl_certbot_create_if_missing:
+        type: bool
+        required: false
+        default: true
+        description: If true, roles will create a certificate when no cert is present
+      ssl_ovh_endpoint:
+        type: str
+        required: false
+        default: ovh-eu
+        description: Ovh API endpoint
+      ssl_ovh_propagation_seconds:
+        type: int
+        required: false
+        default: 120
+        description: Self-explanatory

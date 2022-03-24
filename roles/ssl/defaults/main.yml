@@ -1,11 +1,7 @@
 ---
-ssl_certbot_admin_email: contact@api.gouv.fr
 ssl_certbot_auto_renew_user: "{{ ansible_user }}"
 ssl_certbot_auto_renew_minute: "0"
 ssl_certbot_auto_renew_hour: "3"
 ssl_certbot_create_if_missing: true
-ssl_ovh_zone: api.gouv.fr
-ssl_certbot_create_command: "{{ certbot_script }} certonly --dns-ovh --dns-ovh-credentials /etc/letsencrypt/ovh-dns-secrets/{{ ssl_ovh_zone }}.ini --dns-ovh-propagation-seconds {{ ssl_ovh_propagation_seconds }} --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
 ssl_ovh_endpoint: ovh-eu
-ssl_certbot_testmode: false
 ssl_ovh_propagation_seconds: 120

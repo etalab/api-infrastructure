@@ -29,8 +29,8 @@
     certbot_auto_renew_hour: "{{ ssl_certbot_auto_renew_hour }}"
     certbot_admin_email: "{{ ssl_certbot_admin_email }}"
     certbot_create_if_missing: "{{ ssl_certbot_create_if_missing }}"
-    certbot_create_command: "{{ ssl_certbot_create_command }}"
-    certbot_testmode: "{{ ssl_certbot_testmode }}"
+    certbot_create_command: "{{ certbot_script }} certonly --dns-ovh --dns-ovh-credentials /etc/letsencrypt/ovh-dns-secrets/{{ ssl_ovh_zone }}.ini --dns-ovh-propagation-seconds {{ ssl_ovh_propagation_seconds }} --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }}"
+    certbot_certs: "{{ ssl_certbot_certs }}"
 
 - name: Reload nginx after certificate installation
   service:
