@@ -1,0 +1,8 @@
+argument_specs:
+  main:
+    options:
+      blacklisted_ips:
+        type: list
+        required: false
+        default: []
+        description: List of IPs to be blocked by Nginx with the 'deny' instruction
