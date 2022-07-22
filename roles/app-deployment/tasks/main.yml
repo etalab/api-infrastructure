@@ -1,8 +1,0 @@
----
-- name: Run the dev playbook
-  import_tasks: dev.yml
-  when: dev_deployment
-
-- name: Run the server app playbook
-  import_tasks: server.yml
-  when: not dev_deployment

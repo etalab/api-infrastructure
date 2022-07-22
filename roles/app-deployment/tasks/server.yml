@@ -1,8 +1,0 @@
----
-- name: Copy the deployment script
-  template:
-    src: deploy-server-app.sh.j2
-    dest: "{{ deployment_script_dir }}/deploy-server-app.sh"
-    owner: "{{ deployment_script_owner }}"
-    group: "{{ deployment_script_owner }}"
-    mode: 0755

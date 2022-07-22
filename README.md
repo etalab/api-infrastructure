@@ -31,8 +31,5 @@ The aim is to share the best roles found in every Etalab project, to make them r
 | redis                 | 2      |
 | ssh-security          | 2      |
 | postgres              | 0      |
-| app-deployment        | 0      |
 | app-user              | 0      |
-| continuous-deployment | 0      |
-| node-app              | 0      |
 | ufw                   | 0      |
