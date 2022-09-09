@@ -1,5 +1,5 @@
 ---
-ssl_certbot_auto_renew_user: "{{ ansible_user }}"
+ssl_certbot_auto_renew_user: root
 ssl_certbot_auto_renew_minute: "0"
 ssl_certbot_auto_renew_hour: "3"
 ssl_certbot_create_if_missing: true
