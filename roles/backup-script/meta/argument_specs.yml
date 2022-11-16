@@ -10,7 +10,7 @@ argument_specs:
           The frequency of the backup.
           - daily: every day at 2AM
           - weekly: every monday at 2AM
-        choises:
+        choices:
           - daily
           - weekly
       backup_user:
@@ -41,7 +41,7 @@ argument_specs:
       public_pgp_key_path:
         type: str
         required: false
-        default: "{{ inventory_dir }}/pgp-keys/{{ inventory_file | basename }}/backup.pub.asc"
+        default: "./pgp-keys/{{ inventory_file | basename }}/backup.pub.asc"
         description: The path on the host to the public PGP key used to encrypt the backup
       openstack_auth_url:
         type: str

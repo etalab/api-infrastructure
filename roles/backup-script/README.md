@@ -26,7 +26,7 @@ backup_identifier: api-auth-database
 gpg_recipient: contact@api.gouv.fr
 frequency: daily
 enable_backup: true
-public_pgp_key_path: '{{ inventory_dir }}/pgp-keys/{{ inventory_file | basename }}/backup.pub.asc'
+public_pgp_key_path: './pgp-keys/{{ inventory_file | basename }}/backup.pub.asc'
 backup_command: 'pg_dump --clean --format=custom {{ pg_database }}'
 # for folder backup you can use:
 # backup_command: "tar --create --gzip --absolute-names {{ folder_to_backup }}
