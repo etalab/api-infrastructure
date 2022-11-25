@@ -16,3 +16,12 @@
     name: "{{ pg_database }}"
     owner: "{{ pg_user }}"
   become_user: postgres
+
+- name: Adds extensions to the database
+  postgresql_ext:
+    name: "{{ item }}"
+    db: "{{ pg_database }}"
+    schema: public
+  with_items:
+    - "{{ pg_extensions }}"
+  become_user: postgres

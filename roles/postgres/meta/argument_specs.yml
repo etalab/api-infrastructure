@@ -1,0 +1,22 @@
+argument_specs:
+  main:
+    options:
+      pg_database:
+        type: str
+        required: true
+        description: The name of the database to be created.
+      pg_user:
+        type: str
+        required: true
+        description: User used to connect to the database.
+      pg_password:
+        type: str
+        required: true
+        description: Password used to connect to the database.
+      pg_extensions:
+        type: list
+        required: false
+        default: []
+        description: |
+          Extensions to install in the database.
+          List of available extensions can be found here: https://www.postgresql.org/docs/current/contrib.html

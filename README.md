@@ -26,10 +26,10 @@ The aim is to share the best roles found in every Etalab project, to make them r
 | backup-script         | 3      |
 | ssl                   | 3      |
 | nginx                 | 3      |
+| postgres              | 3      |
 | ips-load-balancing    | 2      |
 | refresh-apt-cache     | 2      |
 | redis                 | 2      |
 | ssh-security          | 2      |
-| postgres              | 0      |
 | app-user              | 0      |
 | ufw                   | 0      |
