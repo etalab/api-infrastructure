@@ -5,7 +5,7 @@ This role hardens the ssh options to only allow ssh connection to these users.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -13,7 +13,7 @@ This role hardens the ssh options to only allow ssh connection to these users.
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
-// none
+# none
 ```

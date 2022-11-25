@@ -5,7 +5,7 @@ This role adds multiple outgoing IPs
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -13,7 +13,7 @@ This role adds multiple outgoing IPs
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 ---
 outgoing_ips:
   - xx.yy.zz.00

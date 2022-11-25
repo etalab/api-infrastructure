@@ -5,7 +5,7 @@ This role refresh apt cache
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -13,7 +13,7 @@ This role refresh apt cache
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
 apt_cache_valid_time: 86400
 ```

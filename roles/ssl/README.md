@@ -15,7 +15,7 @@ See `argument_specs.yml`.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -23,7 +23,7 @@ See `argument_specs.yml`.
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
 ssl_certbot_admin_email: contact@api.gouv.fr
 ssl_ovh_zone: api.gouv.fr
@@ -38,7 +38,7 @@ ssl_certbot_certs:
 ```
 
 ```yaml
-// secrets.yml
+# secrets.yml
 
 ssl_ovh_dns_api_app_key: xxx
 ssl_ovh_dns_api_app_secret: xxx

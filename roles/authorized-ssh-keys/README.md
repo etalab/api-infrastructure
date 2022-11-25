@@ -9,7 +9,7 @@ See `argument_specs.yml`.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -17,7 +17,7 @@ See `argument_specs.yml`.
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
 authorized_ssh_keys:
     - key: https://github.com/username.keys

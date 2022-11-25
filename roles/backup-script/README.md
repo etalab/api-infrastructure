@@ -11,7 +11,7 @@ See `argument_specs.yml`.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - role: backup-script
   tags: backup-script
@@ -19,7 +19,7 @@ See `argument_specs.yml`.
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
 backup_user: '{{ app_user }}'
 backup_identifier: api-auth-database
@@ -35,7 +35,7 @@ openstack_username: user-0123ABCDabcd
 ```
 
 ```yaml
-// secrets.yml
+# secrets.yml
 
 openstack_tenant_id: 01234567890123456789abcdeabcdeab
 openstack_tenant_name: 0123456789012345

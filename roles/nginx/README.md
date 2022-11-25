@@ -9,14 +9,14 @@ See `argument_specs.yml`.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles: nginx
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
 blacklisted_ips:
   - 192.168.0.1

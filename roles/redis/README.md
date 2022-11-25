@@ -5,7 +5,7 @@ This roles installs redis server.
 ## Example usage
 
 ```yaml
-// playbook.yml
+# playbook.yml
 
 - hosts: all
   roles:
@@ -13,7 +13,7 @@ This roles installs redis server.
 ```
 
 ```yaml
-// vars.yml
+# vars.yml
 
-// none
+# none
 ```
