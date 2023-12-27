@@ -14,11 +14,28 @@
 
 - name: Install OVH DNS API secrets file for ovh_zone
   template:
-    dest: "/etc/letsencrypt/ovh-dns-secrets/{{ ssl_ovh_zone }}.ini"
+    dest: "/etc/letsencrypt/ovh-dns-secrets/{{ cert_item.ssl_ovh_zone | default(ssl_ovh_zone) }}.ini"
     src: ovh-secrets.ini.j2
     owner: root
     group: root
     mode: 0600
+  with_items: "{{ ssl_certbot_certs }}"
+  loop_control:
+    loop_var: cert_item
+
+- name: Configure the post hook script
+  copy:
+    content: "{{ cert_item.post_hook_script }}"
+    owner: "root"
+    group: "root"
+    mode: 0755
+    dest: "{{ cert_item.post_hook_script_path }}"
+  when:
+    - cert_item.ssl_certbot_post_hook_script_path
+    - cert_item.ssl_certbot_post_hook_script
+  with_items: "{{ ssl_certbot_certs }}"
+  loop_control:
+    loop_var: cert_item
 
 - name: Install, configure and run certbot
   include_role:
@@ -29,10 +46,20 @@
     certbot_auto_renew_hour: "{{ ssl_certbot_auto_renew_hour }}"
     certbot_admin_email: "{{ ssl_certbot_admin_email }}"
     certbot_create_if_missing: "{{ ssl_certbot_create_if_missing }}"
-    certbot_create_command: "{{ certbot_script }} certonly --dns-ovh --dns-ovh-credentials /etc/letsencrypt/ovh-dns-secrets/{{ ssl_ovh_zone }}.ini --dns-ovh-propagation-seconds {{ ssl_ovh_propagation_seconds }} --noninteractive --agree-tos --email {{ cert_item.email | default(certbot_admin_email) }} -d {{ cert_item.domains | join(',') }} --expand"
+    certbot_create_command: >-
+      {{ certbot_script }} certonly
+      --dns-ovh --dns-ovh-credentials /etc/letsencrypt/ovh-dns-secrets/{{ cert_item.ssl_ovh_zone | default(ssl_ovh_zone) }}.ini
+      --dns-ovh-propagation-seconds {{ ssl_ovh_propagation_seconds }}
+      --noninteractive
+      --agree-tos
+      --email {{ cert_item.email | default(certbot_admin_email) }}
+      -d {{ cert_item.domains | join(',') }}
+      {{ ['--post-hook', cert_item.post_hook_script_path] | join(' ') if cert_item.post_hook_script_path and cert_item.post_hook_script else '' }}
+      --expand
     certbot_certs: "{{ ssl_certbot_certs }}"
 
 - name: Reload nginx after certificate installation
   service:
     name: nginx
     state: reloaded
+  when: ssl_reload_nginx_service | default(true)

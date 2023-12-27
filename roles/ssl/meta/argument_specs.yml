@@ -55,3 +55,8 @@ argument_specs:
         required: false
         default: 120
         description: Self-explanatory
+      ssl_reload_nginx_service:
+        type: bool
+        required: false
+        default: true
+        description: Reload the nginx service when true

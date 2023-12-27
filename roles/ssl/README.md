@@ -35,6 +35,19 @@ ssl_certbot_certs:
       - example2.com
   - domains:
       - api.gouv.fr
+  - domains:
+      - foo.bar
+      - '*.foo.bar'
+    ssl_ovh_dns_api_app_key: ssl_ovh_dns_domains['foo.bar'].api_app_key
+    ssl_ovh_dns_api_app_secret: ssl_ovh_dns_domains['foo.bar'].api_app_secret
+    ssl_ovh_dns_api_consumer_key: ssl_ovh_dns_domains['foo.bar'].api_consumer_key
+    ssl_ovh_zone: foo.bar
+
+    post_hook_script_path: /etc/letsencrypt/renewal-hooks/post/foo.bar
+    post_hook_script: |
+      #!/bin/sh
+
+      docker exec -it nginx sh -c "nginx -s reload"
 ```
 
 ```yaml
@@ -43,4 +56,11 @@ ssl_certbot_certs:
 ssl_ovh_dns_api_app_key: xxx
 ssl_ovh_dns_api_app_secret: xxx
 ssl_ovh_dns_api_consumer_key: xxx
+
+ssl_ovh_dns_domains:
+  foo.bar:
+    api_app_key: xxx
+    api_app_secret: xxx
+    api_consumer_key: xxx
+
 ```

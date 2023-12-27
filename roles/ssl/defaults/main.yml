@@ -5,3 +5,4 @@ ssl_certbot_auto_renew_hour: "3"
 ssl_certbot_create_if_missing: true
 ssl_ovh_endpoint: ovh-eu
 ssl_ovh_propagation_seconds: 120
+ssl_reload_nginx_service: true
