@@ -31,8 +31,8 @@
     mode: 0755
     dest: "{{ cert_item.post_hook_script_path }}"
   when:
-    - cert_item.ssl_certbot_post_hook_script_path
-    - cert_item.ssl_certbot_post_hook_script
+    - cert_item.post_hook_script_path is defined
+    - cert_item.post_hook_script is defined
   with_items: "{{ ssl_certbot_certs }}"
   loop_control:
     loop_var: cert_item
