@@ -38,9 +38,9 @@ ssl_certbot_certs:
   - domains:
       - foo.bar
       - '*.foo.bar'
-    ssl_ovh_dns_api_app_key: ssl_ovh_dns_domains['foo.bar'].api_app_key
-    ssl_ovh_dns_api_app_secret: ssl_ovh_dns_domains['foo.bar'].api_app_secret
-    ssl_ovh_dns_api_consumer_key: ssl_ovh_dns_domains['foo.bar'].api_consumer_key
+    ssl_ovh_dns_api_app_key: "{{ ssl_ovh_dns_domains['foo.bar'].api_app_key }}"
+    ssl_ovh_dns_api_app_secret: "{{ ssl_ovh_dns_domains['foo.bar'].api_app_secret }}"
+    ssl_ovh_dns_api_consumer_key: "{{ ssl_ovh_dns_domains['foo.bar'].api_consumer_key }}"
     ssl_ovh_zone: foo.bar
 
     post_hook_script_path: /etc/letsencrypt/renewal-hooks/post/foo.bar
